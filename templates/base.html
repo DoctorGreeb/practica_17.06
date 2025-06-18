@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML NOOBS - Платформа для обучения</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="blue">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo">HTML NOOBS</a>
+                <ul class="right">
+                    {% if session.username %}
+                        <li><span>Привет, {{ session.username }}</span></li>
+                        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Логин</a></li>
+                        <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container main-content">
+        <div class="row">
+            <aside class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Разделы</span>
+                        <ul>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/#html-basics">Основы HTML</a></li>
+                            <li><a href="/#css-styling">Основы CSS</a></li>
+                            <li><a href="/#javascript-basics">Основы JavaScript</a></li>
+                            <li><a href="/#основы-python">Основы Python</a></li>
+                            <li><a href="/#responsive-design">Отзывчивый дизайн</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+            <main class="col s12 m9">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <footer class="page-footer blue">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">HTML NOOBS - Платформа для обучения</h5>
+                <p class="grey-text text-lighten-4">Изучай основные языки для веб-разработки и получи опыт работы с HTML, CSS и JavaScript.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Ссылки</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="{{ url_for('about') }}">О нас</a></li>
+                    <li><a class="grey-text text-lighten-3" href="{{ url_for('contacts') }}">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2025 HTML NOOBS
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

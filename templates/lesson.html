@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ lesson.title }}</h2>
+    <p>Тема: {{ topic.title }}</p>
+    <p><a href="{{ url_for('topic', topic_id=topic.id) }}" class="btn blue">Вернуться к теме</a></p>
+    <h4>Описание</h4>
+    <p>{{ lesson.description }}</p>
+    <h4>Содержание урока</h4>
+    <div class="lesson-content">
+        {{ lesson.content | safe }}
+    </div>
+{% endblock %}

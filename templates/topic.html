@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ topic.title }}</h2>
+    <p>{{ topic.content }}</p>
+
+    <h4>Уроки</h4>
+    {% if topic.lessons %}
+        <div class="accordion">
+            {% for lesson in topic.lessons %}
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-title">{{ lesson.title }}</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>{{ lesson.description }}</p>
+                        <a href="{{ url_for('lesson', lesson_id=lesson.id) }}" class="btn blue">Перейти к уроку</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Уроки для этой темы пока недоступны.</p>
+    {% endif %}
+
+    <h4>Комментарии</h4>
+    {% if session.user_id %}
+        <form method="POST" action="{{ url_for('topic', topic_id=topic.id) }}">
+            <div class="input-field">
+                <textarea id="content" name="content" class="materialize-textarea" required></textarea>
+                <label for="content">Добавить комментарий</label>
+            </div>
+            <button type="submit" class="btn blue">Опубликовать</button>
+        </form>
+    {% else %}
+        <p>Пожалуйста, <a href="{{ url_for('login') }}">войдите,</a> чтобы оставить комментарий.</p>
+    {% endif %}
+    {% for comment in topic.comments %}
+        <div class="card">
+            <div class="card-content">
+                <p><strong>{{ comment.user.username }}</strong>: {{ comment.content }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Предотвращаем всплытие события
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.accordion-icon');
+                    const isOpen = content.style.maxHeight;
+
+                    document.querySelectorAll('.accordion-content').forEach(item => {
+                        item.style.maxHeight = null;
+                        item.parentElement.querySelector('.accordion-icon').textContent = '+';
+                    });
+
+                    if (!isOpen) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.textContent = '−';
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
