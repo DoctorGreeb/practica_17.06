@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,47 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Убедитесь, что кнопка с id="theme-toggle" существует
+            const themeToggleButton = document.getElementById('theme-toggle');
+
+            if (themeToggleButton) {
+                // Обработчик события для переключения темы
+                themeToggleButton.addEventListener('click', function () {
+                    // Переключаем класс 'dark-mode' у body
+                    document.body.classList.toggle('dark-mode');
+
+                    // Сохраняем выбранную тему в localStorage
+                    if (document.body.classList.contains('dark-mode')) {
+                        localStorage.setItem('theme', 'dark'); // Темная тема
+                    } else {
+                        localStorage.setItem('theme', 'light'); // Светлая тема
+                    }
+                });
+            }
+
+            // При загрузке страницы проверяем сохраненную тему
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode'); // Применяем темную тему
+            }
+        });
+    </script>
     <header>
         <nav class="blue">
             <div class="nav-wrapper container">
                 <a href="/" class="brand-logo">HTML NOOBS</a>
                 <ul class="right">
                     {% if session.username %}
-                        <li><span>Привет, {{ session.username }}</span></li>
-                        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
+                    <li><span>Привет, {{ session.username }}</span></li>
+                    <li><a href="{{ url_for('logout') }}">Выйти</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('login') }}">Логин</a></li>
-                        <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+                    <li><a href="{{ url_for('login') }}">Логин</a></li>
+                    <li><a href="{{ url_for('register') }}">Регистрация</a></li>
                     {% endif %}
+                    <button id="theme-toggle" class="btn blue">Переключить тему</button>
                 </ul>
             </div>
         </nav>
@@ -51,28 +80,30 @@
     </div>
 
     <footer class="page-footer blue">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">HTML NOOBS - Платформа для обучения</h5>
-                <p class="grey-text text-lighten-4">Изучай основные языки для веб-разработки и получи опыт работы с HTML, CSS и JavaScript.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Ссылки</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="{{ url_for('about') }}">О нас</a></li>
-                    <li><a class="grey-text text-lighten-3" href="{{ url_for('contacts') }}">Контакты</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
         <div class="container">
-            © 2025 HTML NOOBS
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">HTML NOOBS - Платформа для обучения</h5>
+                    <p class="grey-text text-lighten-4">Изучай основные языки для веб-разработки и получи опыт работы с
+                        HTML, CSS и JavaScript.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Ссылки</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="{{ url_for('about') }}">О нас</a></li>
+                        <li><a class="grey-text text-lighten-3" href="{{ url_for('contacts') }}">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2025 HTML NOOBS
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>
