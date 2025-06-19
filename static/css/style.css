@@ -1,25 +1,69 @@
-/* --- Общие настройки и шрифты --- */
+/* --- Светлая тема --- */
 body {
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%);
+  background: linear-gradient(135deg, #9c27b0, #ab47bc, #8e24aa, #7b1fa2);
+  background-size: 400% 400%;
   min-height: 100vh;
-  color: #f3f3f3;
+  color: #ffffff; /* Светлый текст */
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  animation: bgGradient 15s ease infinite alternate;
+  animation: bgGradient 15s ease infinite;
+}
+
+/* --- Темная тема --- */
+body.dark-mode {
+  background: #121212; /* Темный фон */
+  color: #e0e0e0; /* Светлый текст на темном фоне */
+}
+
+.page-footer.blue {
+  background: linear-gradient(90deg, #8e24aa, #5e35b1);
+  box-shadow: 0 -8px 25px rgba(142, 36, 170, 0.9);
+  text-align: center;
+  padding: 24px 20px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #ffffff; /* Белый текст для светлой темы */
+}
+
+/* Темная тема для футера */
+body.dark-mode .page-footer.blue {
+  background: linear-gradient(90deg, #4a148c, #6a1b9a); /* Темный фон для футера */
+  color: #e0e0e0; /* Светлый текст в футере */
+}
+
+/* Ссылки для темной темы */
+body.dark-mode nav ul.right li a {
+  color: #d1c4e9; /* Светлый цвет текста для ссылок в темной теме */
+}
+
+/* --- Общие настройки и шрифты --- */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #9c27b0, #ab47bc, #8e24aa, #7b1fa2); /* Яркий и контрастный фиолетовый градиент */
+  background-size: 400% 400%; /* Устанавливаем размер фона для анимации */
+  min-height: 100vh;
+  color: #ffffff; /* Белый текст для хорошей видимости */
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  animation: bgGradient 15s ease infinite; /* Плавная анимация фона */
 }
 
 @keyframes bgGradient {
   0% {
     background-position: 0% 50%;
   }
-  100% {
+  50% {
     background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-
 /* --- Навигация --- */
 
 nav.blue {
@@ -69,15 +113,13 @@ nav ul.right li a {
   transition: color 0.35s ease, transform 0.25s ease;
 }
 
-nav ul.right li a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -6px;
-  left: 0;
-  background-color: #ffd600;
-  transition: width 0.3s ease;
+nav ul.right li a {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #e1bee7;
+  position: relative;
+  transition: color 0.35s ease, transform 0.25s ease;
 }
 
 nav ul.right li a:hover {
@@ -86,9 +128,7 @@ nav ul.right li a:hover {
   text-shadow: 0 0 12px #ffd600;
 }
 
-nav ul.right li a:hover::after {
-  width: 100%;
-}
+
 
 /* --- Контейнер и структура --- */
 
@@ -212,7 +252,7 @@ main .card-title {
 .btn.blue:hover {
   background: linear-gradient(45deg, #6a1b9a, #9c27b0);
   box-shadow: 0 14px 36px rgba(156, 39, 176, 1);
-  transform: scale(1.12);
+  transform: scale(1.08); /* Уменьшено увеличение кнопки */
   animation: pulseGlow 3s infinite;
   color: #fff;
   z-index: 2;
@@ -228,6 +268,10 @@ main .card-title {
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
 }
+
+.btn.blue:active {
+  transform: scale(0.96); /* Уменьшено уменьшение кнопки при нажатии */
+} 
 
 /* Волна на кнопке при клике */
 .btn.blue:focus:not(:active)::after {
@@ -322,13 +366,13 @@ main .card-title {
 /* --- Футер --- */
 
 .page-footer.blue {
-  background: linear-gradient(90deg, #8e24aa, #5e35b1);
+  background: linear-gradient(90deg, #8e24aa, #5e35b1); /* Градиент на фоне */
   box-shadow: 0 -8px 25px rgba(142, 36, 170, 0.9);
   text-align: center;
   padding: 24px 20px;
-  font-weight: 600;
+  font-weight: 300; /* Уменьшаем жирность текста */
   letter-spacing: 0.05em;
-  color: #e1bee7;
+  color: #ffffff; /* Белый цвет текста для хорошей видимости */
   animation: fadeInUp 1.3s ease forwards;
   opacity: 0;
   transform: translateY(30px);
@@ -346,13 +390,14 @@ main .card-title {
 }
 
 .card-content ul li a {
-    color: #ce93d8;
-    transition: color 0.3s ease;
+    color: #ffffff; /* Белый цвет текста для ссылок */
+    transition: none; /* Убираем переходы */
+    font-weight: 300; /* Уменьшаем жирность ссылок */
 }
 
 .card-content ul li a:hover {
-    color: #ffd600;
-    text-shadow: 0 0 10px #ffd600;
+    color: #ffffff; /* Убираем изменение цвета при наведении */
+    text-decoration: none; /* Убираем подчеркивание */
 }
 
 /* --- Аккордеон --- */
