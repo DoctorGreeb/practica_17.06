@@ -41,6 +41,7 @@ with app.app_context():
     db.create_all()
 
 # Routes
+
 @app.route('/')
 def index():
     topics = Topic.query.all()
