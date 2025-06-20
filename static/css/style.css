@@ -1,4 +1,4 @@
-/* --- Общие настройки и шрифты --- */
+/* --- Светлая тема --- */
 body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(135deg, #9c27b0, #ab47bc, #8e24aa, #7b1fa2);
@@ -12,6 +12,54 @@ body {
   animation: bgGradient 15s ease infinite;
 }
 
+/* --- Темная тема --- */
+body.dark-mode {
+  background: #121212; /* Темный фон */
+  color: #e0e0e0; /* Светлый текст на темном фоне */
+}
+
+.page-footer.blue {
+  background: linear-gradient(90deg, #8e24aa, #5e35b1);
+  box-shadow: 0 -8px 25px rgba(142, 36, 170, 0.9);
+  text-align: center;
+  padding: 24px 20px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #ffffff; /* Белый текст для светлой темы */
+}
+
+/* Темная тема для футера */
+body.dark-mode .page-footer.blue {
+  background: linear-gradient(90deg, #4a148c, #6a1b9a); /* Темный фон для футера */
+  color: #e0e0e0; /* Светлый текст в футере */
+}
+
+/* Ссылки для темной темы */
+body.dark-mode nav ul.right li a {
+  color: #d1c4e9; /* Светлый цвет текста для ссылок в темной теме */
+}
+
+/* --- Общие настройки и шрифты --- */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%);
+  min-height: 100vh;
+  color: #f3f3f3;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  animation: bgGradient 15s ease infinite alternate;
+}
+
+@keyframes bgGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
 /* --- Навигация --- */
 nav.blue {
   background: linear-gradient(90deg, #8e24aa, #5e35b1);
@@ -73,6 +121,10 @@ nav ul.right li a:hover {
   color: #ffd600;
   transform: scale(1.12) rotate(-2deg);
   text-shadow: 0 0 12px #ffd600;
+}
+
+nav ul.right li a:hover::after {
+  width: 100%;
 }
 
 /* --- Контейнер и структура --- */
@@ -193,7 +245,7 @@ main .card-title {
 .btn.blue:hover {
   background: linear-gradient(45deg, #6a1b9a, #9c27b0);
   box-shadow: 0 14px 36px rgba(156, 39, 176, 1);
-  transform: scale(1.08);
+  transform: scale(1.12);
   animation: pulseGlow 3s infinite;
   color: #fff;
   z-index: 2;
@@ -209,6 +261,10 @@ main .card-title {
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
 }
+
+.btn.blue:active {
+  transform: scale(0.96); /* Уменьшено уменьшение кнопки при нажатии */
+} 
 
 .btn.blue:active {
   transform: scale(0.96);
@@ -302,13 +358,17 @@ main .card-title {
 
 /* --- Футер --- */
 .page-footer.blue {
-  background: linear-gradient(90deg, #8e24aa, #5e35b1);
+  background: linear-gradient(90deg, #8e24aa, #5e35b1); /* Градиент на фоне */
   box-shadow: 0 -8px 25px rgba(142, 36, 170, 0.9);
   text-align: center;
   padding: 24px 20px;
-  font-weight: 300;
+  font-weight: 600;
   letter-spacing: 0.05em;
-  color: #ffffff;
+  color: #e1bee7;
+  animation: fadeInUp 1.3s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  animation-delay: 1.5s;
 }
 
 .card-content ul {
@@ -322,14 +382,13 @@ main .card-title {
 }
 
 .card-content ul li a {
-    color: #ffffff;
-    transition: none;
-    font-weight: 300;
+    color: #ce93d8;
+    transition: color 0.3s ease;
 }
 
 .card-content ul li a:hover {
-    color: #ffffff;
-    text-decoration: none;
+    color: #ffd600;
+    text-shadow: 0 0 10px #ffd600;
 }
 
 /* --- Аккордеон --- */
