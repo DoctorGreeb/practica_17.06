@@ -1,27 +1,18 @@
 /* --- Общие настройки и шрифты --- */
 body {
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%);
+  background: linear-gradient(135deg, #9c27b0, #ab47bc, #8e24aa, #7b1fa2);
+  background-size: 400% 400%;
   min-height: 100vh;
-  color: #f3f3f3;
+  color: #ffffff; /* Светлый текст */
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  animation: bgGradient 15s ease infinite alternate;
-}
-
-@keyframes bgGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+  animation: bgGradient 15s ease infinite;
 }
 
 /* --- Навигация --- */
-
 nav.blue {
   background: linear-gradient(90deg, #8e24aa, #5e35b1);
   box-shadow: 0 6px 25px rgba(142, 36, 170, 0.85);
@@ -69,15 +60,13 @@ nav ul.right li a {
   transition: color 0.35s ease, transform 0.25s ease;
 }
 
-nav ul.right li a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -6px;
-  left: 0;
-  background-color: #ffd600;
-  transition: width 0.3s ease;
+nav ul.right li a {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #e1bee7;
+  position: relative;
+  transition: color 0.35s ease, transform 0.25s ease;
 }
 
 nav ul.right li a:hover {
@@ -86,19 +75,13 @@ nav ul.right li a:hover {
   text-shadow: 0 0 12px #ffd600;
 }
 
-nav ul.right li a:hover::after {
-  width: 100%;
-}
-
 /* --- Контейнер и структура --- */
-
 .container.main-content {
   margin-top: 60px;
   margin-bottom: 110px;
 }
 
 /* --- Сайдбар --- */
-
 aside .card {
   background: rgba(255, 255, 255, 0.06);
   border-radius: 22px;
@@ -144,7 +127,6 @@ aside ul li a:hover {
 }
 
 /* --- Основной контент --- */
-
 main .card {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 30px;
@@ -175,7 +157,6 @@ main .card-title {
 }
 
 /* --- Кнопки с эффектом волны и свечения --- */
-
 .btn.blue {
   position: relative;
   background: linear-gradient(45deg, #9c27b0, #6a1b9a);
@@ -212,7 +193,7 @@ main .card-title {
 .btn.blue:hover {
   background: linear-gradient(45deg, #6a1b9a, #9c27b0);
   box-shadow: 0 14px 36px rgba(156, 39, 176, 1);
-  transform: scale(1.12);
+  transform: scale(1.08);
   animation: pulseGlow 3s infinite;
   color: #fff;
   z-index: 2;
@@ -229,7 +210,10 @@ main .card-title {
   opacity: 0;
 }
 
-/* Волна на кнопке при клике */
+.btn.blue:active {
+  transform: scale(0.96);
+}
+
 .btn.blue:focus:not(:active)::after {
   content: "";
   position: absolute;
@@ -268,7 +252,6 @@ main .card-title {
 }
 
 /* --- Формы --- */
-
 .input-field input[type=text],
 .input-field input[type=password],
 .materialize-textarea {
@@ -308,9 +291,7 @@ main .card-title {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-
 /* Ошибки */
-
 .red-text {
   font-weight: 700;
   color: #ef5350 !important;
@@ -320,19 +301,14 @@ main .card-title {
 }
 
 /* --- Футер --- */
-
 .page-footer.blue {
   background: linear-gradient(90deg, #8e24aa, #5e35b1);
   box-shadow: 0 -8px 25px rgba(142, 36, 170, 0.9);
   text-align: center;
   padding: 24px 20px;
-  font-weight: 600;
+  font-weight: 300;
   letter-spacing: 0.05em;
-  color: #e1bee7;
-  animation: fadeInUp 1.3s ease forwards;
-  opacity: 0;
-  transform: translateY(30px);
-  animation-delay: 1.5s;
+  color: #ffffff;
 }
 
 .card-content ul {
@@ -346,13 +322,14 @@ main .card-title {
 }
 
 .card-content ul li a {
-    color: #ce93d8;
-    transition: color 0.3s ease;
+    color: #ffffff;
+    transition: none;
+    font-weight: 300;
 }
 
 .card-content ul li a:hover {
-    color: #ffd600;
-    text-shadow: 0 0 10px #ffd600;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 /* --- Аккордеон --- */
@@ -442,4 +419,524 @@ main .card-title {
   }
 }
 
+/* --- Оранжевая тема --- */
+body.orange-mode {
+    background: #fff3e0; /* Светлый оранжевый фон */
+    color: #333333; /* Тёмный текст для читаемости */
+}
 
+/* Навигация */
+body.orange-mode nav.blue {
+    background: linear-gradient(90deg, #f4511e, #ff8a65); /* Оранжевый градиент */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.orange-mode nav ul.right li a {
+    color: #333333;
+}
+
+body.orange-mode nav ul.right li a:hover {
+    color: #f4511e; /* Оранжевый акцент при наведении */
+    text-shadow: none;
+}
+
+body.orange-mode .brand-logo {
+    color: #333333;
+    text-shadow: none;
+}
+
+body.orange-mode nav ul.right li span {
+    color: #666666;
+    text-shadow: none;
+}
+
+/* Карточки */
+body.orange-mode main .card {
+    background: #ffebee; /* Очень светлый оранжевый фон карточек */
+    border: 1.8px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+body.orange-mode main .card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: #f4511e;
+}
+
+body.orange-mode main .card-title {
+    color: #333333;
+    text-shadow: none;
+}
+
+/* Сайдбар */
+body.orange-mode aside .card {
+    background: #ffebee;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+body.orange-mode aside .card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: #f4511e;
+}
+
+body.orange-mode aside .card-title {
+    color: #333333;
+    text-shadow: none;
+}
+
+body.orange-mode aside ul li a {
+    color: #f4511e;
+    text-shadow: none;
+}
+
+body.orange-mode aside ul li a:hover {
+    color: #ff8a65;
+}
+
+/* Кнопки */
+body.orange-mode .btn.blue {
+    background: linear-gradient(45deg, #f4511e, #ff8a65);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+body.orange-mode .btn.blue:hover {
+    background: linear-gradient(45deg, #ff8a65, #f4511e);
+    box-shadow: 0 14px 36px rgba(244, 81, 30, 0.8); /* Оранжевый ореол */
+    transform: scale(1.08);
+    animation: pulseGlowOrange 3s infinite; /* Оранжевая анимация */
+    color: #ffffff;
+    z-index: 2;
+}
+
+/* Анимация ореола для оранжевой темы */
+@keyframes pulseGlowOrange {
+    0%, 100% {
+        box-shadow: 0 0 12px 0 rgba(244, 81, 30, 0.6); /* Мягкий оранжевый ореол */
+    }
+    50% {
+        box-shadow: 0 0 28px 6px rgba(244, 81, 30, 0.9); /* Более интенсивный оранжевый */
+    }
+}
+
+/* Формы */
+body.orange-mode .input-field input[type=text],
+body.orange-mode .input-field input[type=password],
+body.orange-mode .materialize-textarea {
+    background: #ffffff;
+    border: 2px solid #cccccc;
+    color: #333333;
+    box-shadow: none;
+}
+
+body.orange-mode .input-field input[type=text]:focus,
+body.orange-mode .input-field input[type=password]:focus,
+body.orange-mode .materialize-textarea:focus {
+    border-color: #f4511e;
+    box-shadow: 0 0 12px rgba(244, 81, 30, 0.3);
+    background: #ffffff;
+}
+
+body.orange-mode .input-field label {
+    color: #666666;
+    text-shadow: none;
+}
+
+/* Аккордеон */
+body.orange-mode .accordion-item {
+    background: #ffebee;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.orange-mode .accordion-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.orange-mode .accordion-header {
+    background: linear-gradient(45deg, #f4511e, #ff8a65);
+}
+
+body.orange-mode .accordion-header:hover {
+    background: linear-gradient(45deg, #ff8a65, #f4511e);
+}
+
+body.orange-mode .accordion-title {
+    color: #ffffff;
+    text-shadow: none;
+}
+
+body.orange-mode .accordion-content p {
+    color: #333333;
+}
+
+/* Футер */
+body.orange-mode .page-footer.blue {
+    background: linear-gradient(90deg, #f4511e, #ff8a65);
+    color: #ffffff;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.orange-mode .page-footer.blue a {
+    color: #ffffff;
+}
+
+/* --- Альтернативная светлая тема --- */
+body.light-alt-mode {
+    background: #e6f0fa; /* Светло-голубой фон */
+    color: #333333; /* Тёмный текст для читаемости */
+}
+
+/* Навигация */
+body.light-alt-mode nav.blue {
+    background: linear-gradient(90deg, #0288d1, #4fc3f7); /* Голубой градиент */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.light-alt-mode nav ul.right li a {
+    color: #333333;
+}
+
+body.light-alt-mode nav ul.right li a:hover {
+    color: #0288d1; /* Голубой акцент при наведении */
+    text-shadow: none;
+}
+
+body.light-alt-mode .brand-logo {
+    color: #333333;
+    text-shadow: none;
+}
+
+body.light-alt-mode nav ul.right li span {
+    color: #666666;
+    text-shadow: none;
+}
+
+/* Карточки */
+body.light-alt-mode main .card {
+    background: #f0f8ff; /* Очень светлый голубой фон карточек */
+    border: 1.8px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+body.light-alt-mode main .card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: #0288d1;
+}
+
+body.light-alt-mode main .card-title {
+    color: #333333;
+    text-shadow: none;
+}
+
+/* Сайдбар */
+body.light-alt-mode aside .card {
+    background: #f0f8ff;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+body.light-alt-mode aside .card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: #0288d1;
+}
+
+body.light-alt-mode aside .card-title {
+    color: #333333;
+    text-shadow: none;
+}
+
+body.light-alt-mode aside ul li a {
+    color: #0288d1;
+    text-shadow: none;
+}
+
+body.light-alt-mode aside ul li a:hover {
+    color: #4fc3f7;
+}
+
+/* Кнопки */
+body.light-alt-mode .btn.blue {
+    background: linear-gradient(45deg, #0288d1, #4fc3f7);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+body.light-alt-mode .btn.blue:hover {
+    background: linear-gradient(45deg, #4fc3f7, #0288d1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Формы */
+body.light-alt-mode .input-field input[type=text],
+body.light-alt-mode .input-field input[type=password],
+body.light-alt-mode .materialize-textarea {
+    background: #ffffff;
+    border: 2px solid #cccccc;
+    color: #333333;
+    box-shadow: none;
+}
+
+body.light-alt-mode .input-field input[type=text]:focus,
+body.light-alt-mode .input-field input[type=password]:focus,
+body.light-alt-mode .materialize-textarea:focus {
+    border-color: #0288d1;
+    box-shadow: 0 0 12px rgba(2, 136, 209, 0.3);
+    background: #ffffff;
+}
+
+body.light-alt-mode .input-field label {
+    color: #666666;
+    text-shadow: none;
+}
+
+/* Ореол кнопок в light-alt-mode */
+body.light-alt-mode .btn.blue:hover {
+    background: linear-gradient(45deg, #4fc3f7, #0288d1);
+    box-shadow: 0 14px 36px rgba(2, 136, 209, 0.8); /* Голубой ореол */
+    transform: scale(1.08);
+    animation: pulseGlowLightAlt 3s infinite; /* Новая анимация для light-alt-mode */
+    color: #ffffff;
+    z-index: 2;
+}
+
+/* Анимация для ореола в light-alt-mode */
+@keyframes pulseGlowLightAlt {
+    0%, 100% {
+        box-shadow: 0 0 12px 0 rgba(2, 136, 209, 0.6); /* Мягкий голубой ореол */
+    }
+    50% {
+        box-shadow: 0 0 28px 6px rgba(2, 136, 209, 0.9); /* Более интенсивный голубой */
+    }
+}
+
+/* Аккордеон */
+body.light-alt-mode .accordion-item {
+    background: #f0f8ff;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.light-alt-mode .accordion-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.light-alt-mode .accordion-header {
+    background: linear-gradient(45deg, #0288d1, #4fc3f7);
+}
+
+body.light-alt-mode .accordion-header:hover {
+    background: linear-gradient(45deg, #4fc3f7, #0288d1);
+}
+
+body.light-alt-mode .accordion-title {
+    color: #ffffff;
+    text-shadow: none;
+}
+
+body.light-alt-mode .accordion-content p {
+    color: #333333;
+}
+
+/* Футер */
+body.light-alt-mode .page-footer.blue {
+    background: linear-gradient(90deg, #0288d1, #4fc3f7);
+    color: #ffffff;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.light-alt-mode .page-footer.blue a {
+    color: #ffffff;
+}
+
+/* --- Темная тема --- */
+body.dark-mode {
+  background: #121212; /* Тёмный фон */
+  color: #e0e0e0; /* Светлый текст */
+}
+
+/* Навигация */
+body.dark-mode nav.blue {
+  background: linear-gradient(90deg, #4a148c, #6a1b9a); /* Тёмно-фиолетовый градиент */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode nav.blue:hover {
+  background: linear-gradient(90deg, #6a1b9a, #4a148c);
+}
+
+body.dark-mode nav ul.right li a {
+  color: #d1c4e9; /* Светлый текст для ссылок */
+}
+
+body.dark-mode nav ul.right li a:hover {
+  color: #b39ddb; /* Светло-фиолетовый при наведении */
+  text-shadow: 0 0 12px #b39ddb;
+}
+
+body.dark-mode .brand-logo {
+  color: #e0e0e0;
+}
+
+body.dark-mode nav ul.right li span {
+  color: #b0bec5;
+}
+
+/* Карточки */
+body.dark-mode main .card {
+  background: #1e1e1e; /* Тёмно-серый фон */
+  border: 1.8px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode main .card:hover {
+  box-shadow: 0 35px 75px rgba(74, 20, 140, 0.8); /* Тёмно-фиолетовая тень */
+  border-color: #6a1b9a;
+}
+
+body.dark-mode main .card-title {
+  color: #e0e0e0;
+}
+
+/* Сайдбар */
+body.dark-mode aside .card {
+  background: #1e1e1e;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode aside .card:hover {
+  box-shadow: 0 25px 60px rgba(74, 20, 140, 0.8);
+  border-color: #6a1b9a;
+}
+
+body.dark-mode aside .card-title {
+  color: #e0e0e0;
+}
+
+body.dark-mode aside ul li a {
+  color: #b39ddb;
+}
+
+body.dark-mode aside ul li a:hover {
+  color: #d1c4e9;
+  text-shadow: 0 0 14px #d1c4e9;
+}
+
+/* Кнопки */
+body.dark-mode .btn.blue {
+  background: linear-gradient(45deg, #4a148c, #6a1b9a);
+  box-shadow: 0 8px 22px rgba(74, 20, 140, 0.8);
+  color: #e0e0e0;
+}
+
+body.dark-mode .btn.blue:hover {
+  background: linear-gradient(45deg, #6a1b9a, #4a148c);
+  box-shadow: 0 14px 36px rgba(74, 20, 140, 1); /* Тёмно-фиолетовый ореол */
+  animation: pulseGlowDark 3s infinite;
+  color: #e0e0e0;
+}
+
+/* Анимация ореола для тёмной темы */
+@keyframes pulseGlowDark {
+  0%, 100% {
+    box-shadow: 0 0 12px 0 rgba(74, 20, 140, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 28px 6px rgba(74, 20, 140, 1);
+  }
+}
+
+/* Формы */
+body.dark-mode .input-field input[type=text],
+body.dark-mode .input-field input[type=password],
+body.dark-mode .materialize-textarea {
+  background: #2e2e2e;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+
+body.dark-mode .input-field input[type=text]:focus,
+body.dark-mode .input-field input[type=password]:focus,
+body.dark-mode .materialize-textarea:focus {
+  background: #3e3e3e;
+  border-color: #6a1b9a;
+  box-shadow: 0 0 24px rgba(74, 20, 140, 0.8);
+  color: #e0e0e0;
+}
+
+body.dark-mode .input-field label {
+  color: #b0bec5;
+}
+
+/* Аккордеон */
+body.dark-mode .accordion-item {
+  background: #1e1e1e;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .accordion-item:hover {
+  box-shadow: 0 12px 30px rgba(74, 20, 140, 0.7);
+}
+
+body.dark-mode .accordion-header {
+  background: linear-gradient(45deg, #4a148c, #6a1b9a);
+}
+
+body.dark-mode .accordion-header:hover {
+  background: linear-gradient(45deg, #6a1b9a, #4a148c);
+}
+
+body.dark-mode .accordion-title {
+  color: #e0e0e0;
+}
+
+body.dark-mode .accordion-icon {
+  color: #b39ddb;
+}
+
+body.dark-mode .accordion-content {
+  background: #2e2e2e;
+}
+
+body.dark-mode .accordion-content p {
+  color: #b0bec5;
+}
+
+/* Футер */
+body.dark-mode .page-footer.blue {
+  background: linear-gradient(90deg, #4a148c, #6a1b9a);
+  color: #e0e0e0;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .page-footer.blue a {
+  color: #d1c4e9;
+}
+
+/* --- Общие настройки и шрифты --- */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #9c27b0, #ab47bc, #8e24aa, #7b1fa2); /* Яркий и контрастный фиолетовый градиент */
+  background-size: 400% 400%; /* Устанавливаем размер фона для анимации */
+  min-height: 100vh;
+  color: #ffffff; /* Белый текст для хорошей видимости */
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  animation: bgGradient 15s ease infinite; /* Плавная анимация фона */
+}
+
+@keyframes bgGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
